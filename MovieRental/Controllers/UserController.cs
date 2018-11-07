@@ -24,10 +24,10 @@ namespace MovieRental.Controllers
             }
             return View(model);
         }
-        static List<Customers> customers = new List<Customers>()
+        static List<Customer> customers = new List<Customer>()
         {
-            new Customers(){CustomerId = 1, FullName = "Joh Smyth"},
-            new Customers(){CustomerId = 2, FullName = "Mary Willams"}
+            new Customer(){CustomerId = 1, FullName = "Joh Smyth"},
+            new Customer(){CustomerId = 2, FullName = "Mary Willams"}
         };
     }
 }

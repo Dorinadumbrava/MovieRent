@@ -6,12 +6,14 @@ using System.Web;
 
 namespace MovieRental.Models
 {
-    public class Movie
+    public class MembershipType
     {
         [Key]
-        public int MovieId { get; set; }
+        public int MembershipTypeId { get; set; }
         public string Name { get; set; }
+        public int SignUpFee { get; set; }
+        public byte MonthsOfMembership { get; set; }
+        public byte DiscountRate { get; set; }
         public IList<Customer> Customers { get; set; }
-        public MembershipType MembershipType { get; set; }
     }
 }
