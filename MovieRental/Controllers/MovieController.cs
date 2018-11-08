@@ -25,18 +25,25 @@ namespace MovieRental.Controllers
             }
             return View(model);
         }
-
+        // GET: Movies/Create
+        public ActionResult AddMovie()
+        {
+            var movieModel = new MovieModel()
+            {
+                Genres = _movieContext.Genres.Select(g => g.GenreName).ToList()
+            };
+            return View(movieModel);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddMovie (MovieModel movieModel)
         {
-            try
-            {
+            
                 if (!ModelState.IsValid)
                 {
                     movieModel.Genres = _movieRentalContext.Genres.ToList();
                     return View(movieModel);
-                }
+                
                 var genre = _movieRentalContext.Genres.SingleOrDefault(g => g.GenreId == movieModel.Genre);
                 var genres = new List<Genre>();
                 genres.Add(genre);
@@ -52,10 +59,8 @@ namespace MovieRental.Controllers
                 _movieRentalContext.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            movieModel.Genres = _movieContext.Genres.Select(g => g.GenreName).ToList();
+            return View(movieModel);
         }
 
     }
