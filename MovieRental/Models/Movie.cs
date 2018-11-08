@@ -10,8 +10,20 @@ namespace MovieRental.Models
     {
         [Key]
         public int MovieId { get; set; }
+        [Required]
         public string Name { get; set; }
+        public int CustomerId { get; set; }
         public IList<Customer> Customers { get; set; }
-        public MembershipType MembershipType { get; set; }
+        [Required]
+        public int GenreId { get; set; }
+        public virtual IList<Genre> Genres { get; set; }
+
+        [Required]
+        public DateTimeOffset ReleaseDate { get; set; }
+        [Required]
+        public DateTimeOffset Added { get; set; }
+        
+        [Required]
+        public int NumberInStock { get; set; }
     }
 }

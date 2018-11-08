@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.11\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -53,6 +56,9 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.4.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
@@ -108,6 +114,30 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Abstractions, Version=3.3.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.11\lib\net46\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.2.5.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.11\lib\net46\Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.11\lib\net46\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.5.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.11\lib\net46\Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.1.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.11\lib\net46\Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc5, Version=1.3.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc5.1.3.0\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.1.9.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.11\lib\net46\Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.11\lib\net46\Unity.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -153,30 +183,68 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Contracts\IMovieRentalContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810311355395_initial.cs" />
-    <Compile Include="Migrations\201810311355395_initial.Designer.cs">
-      <DependentUpon>201810311355395_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201811071357560_initial.cs" />
+    <Compile Include="Migrations\201811071357560_initial.Designer.cs">
+      <DependentUpon>201811071357560_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810311357499_add data.cs" />
-    <Compile Include="Migrations\201810311357499_add data.Designer.cs">
-      <DependentUpon>201810311357499_add data.cs</DependentUpon>
+    <Compile Include="Migrations\201811071435318_delete wrong connection.cs" />
+    <Compile Include="Migrations\201811071435318_delete wrong connection.Designer.cs">
+      <DependentUpon>201811071435318_delete wrong connection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810311406100_ad custromers.cs" />
-    <Compile Include="Migrations\201810311406100_ad custromers.Designer.cs">
-      <DependentUpon>201810311406100_ad custromers.cs</DependentUpon>
+    <Compile Include="Migrations\201811071436195_add-data.cs" />
+    <Compile Include="Migrations\201811071436195_add-data.Designer.cs">
+      <DependentUpon>201811071436195_add-data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811071441135_add birthdate and subscribe to newletter.cs" />
+    <Compile Include="Migrations\201811071441135_add birthdate and subscribe to newletter.Designer.cs">
+      <DependentUpon>201811071441135_add birthdate and subscribe to newletter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811071444128_ad-customer.cs" />
+    <Compile Include="Migrations\201811071444128_ad-customer.Designer.cs">
+      <DependentUpon>201811071444128_ad-customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811081541569_nullable birth date.cs" />
+    <Compile Include="Migrations\201811081541569_nullable birth date.Designer.cs">
+      <DependentUpon>201811081541569_nullable birth date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811081600527_added genres table.cs" />
+    <Compile Include="Migrations\201811081600527_added genres table.Designer.cs">
+      <DependentUpon>201811081600527_added genres table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811081606393_populate-genres.cs" />
+    <Compile Include="Migrations\201811081606393_populate-genres.Designer.cs">
+      <DependentUpon>201811081606393_populate-genres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811081625103_populated, MovieGenres and MovieCustomers.cs" />
+    <Compile Include="Migrations\201811081625103_populated, MovieGenres and MovieCustomers.Designer.cs">
+      <DependentUpon>201811081625103_populated, MovieGenres and MovieCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811081658576_added foreign key nav prop.cs" />
+    <Compile Include="Migrations\201811081658576_added foreign key nav prop.Designer.cs">
+      <DependentUpon>201811081658576_added foreign key nav prop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811081736055_update MoviesTable.cs" />
+    <Compile Include="Migrations\201811081736055_update MoviesTable.Designer.cs">
+      <DependentUpon>201811081736055_update MoviesTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MovieModel.cs" />
     <Compile Include="Models\MovieRentalContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="RepositoryInterfaces\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -223,13 +291,15 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
     <Content Include="Views\User\CustomerName.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Movie\AddMovie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Genre\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -245,14 +315,38 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810311355395_initial.resx">
-      <DependentUpon>201810311355395_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811071357560_initial.resx">
+      <DependentUpon>201811071357560_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810311357499_add data.resx">
-      <DependentUpon>201810311357499_add data.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811071435318_delete wrong connection.resx">
+      <DependentUpon>201811071435318_delete wrong connection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810311406100_ad custromers.resx">
-      <DependentUpon>201810311406100_ad custromers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811071436195_add-data.resx">
+      <DependentUpon>201811071436195_add-data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811071441135_add birthdate and subscribe to newletter.resx">
+      <DependentUpon>201811071441135_add birthdate and subscribe to newletter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811071444128_ad-customer.resx">
+      <DependentUpon>201811071444128_ad-customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811081541569_nullable birth date.resx">
+      <DependentUpon>201811081541569_nullable birth date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811081600527_added genres table.resx">
+      <DependentUpon>201811081600527_added genres table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811081606393_populate-genres.resx">
+      <DependentUpon>201811081606393_populate-genres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811081625103_populated, MovieGenres and MovieCustomers.resx">
+      <DependentUpon>201811081625103_populated, MovieGenres and MovieCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811081658576_added foreign key nav prop.resx">
+      <DependentUpon>201811081658576_added foreign key nav prop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811081736055_update MoviesTable.resx">
+      <DependentUpon>201811081736055_update MoviesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

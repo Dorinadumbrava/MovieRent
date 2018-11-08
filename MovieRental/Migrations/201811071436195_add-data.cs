@@ -1,8 +1,8 @@
 namespace MovieRental.Migrations
 {
+    using MovieRental.Models;
     using System;
     using System.Data.Entity.Migrations;
-    using MovieRental.Models;
 
     public partial class adddata : DbMigration
     {
@@ -10,7 +10,7 @@ namespace MovieRental.Migrations
         {
             using (var context = new MovieRentalContext())
             {
-               
+
                 context.Database.ExecuteSqlCommand(
                     "INSERT INTO dbo.MembershipTypes (Name, SignUpFee, MonthsOfMembership, DiscountRate)"
                     + " VALUES ('Pay as You Go', 0, 0, 0)"
@@ -43,13 +43,10 @@ namespace MovieRental.Migrations
                     "INSERT INTO dbo.Movies (Name)"
                     + " VALUES ('The Labyrinth')"
                     );
-                
-               
+
+
             }
         }
-        
-        public override void Down()
-        {
-        }
     }
+
 }

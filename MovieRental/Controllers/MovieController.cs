@@ -9,26 +9,60 @@ namespace MovieRental.Controllers
 {
     public class MovieController : Controller
     {
+        private MovieRentalContext _movieRentalContext = new MovieRentalContext();
         // GET: Movie
         public ActionResult Index()
         {
-            var model = movies;
+            var model = _movieRentalContext.Movies.ToList();
             return View(model);
         }
         public ActionResult Details(int id)
         {
-            var model = movies.SingleOrDefault(m => m.MovieId == id);
+            var model = _movieRentalContext.Movies.SingleOrDefault(m => m.MovieId == id);
             if (model == null )
             {
                 return new HttpNotFoundResult();
             }
             return View(model);
         }
-       
-        static List<Movie> movies = new List<Movie>()
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddMovie (MovieModel movieModel)
         {
-        new Movie() { MovieId = 1, Name = "Shrek" },
-        new Movie() { MovieId = 2, Name = "Wall-e" }
-        };
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    movieModel.Genres = _movieRentalContext.Genres.ToList();
+                    return View(movieModel);
+                }
+                var genre = _movieRentalContext.Genres.SingleOrDefault(g => g.GenreId == movieModel.Genre);
+                var genres = new List<Genre>();
+                genres.Add(genre);
+                var movie = new Movie()
+                {
+                    Name = movieModel.Name,
+                    Genres = genres,
+                    ReleaseDate = movieModel.ReleaseDate,
+                    Added = DateTime.Now,
+                    NumberInStock = movieModel.NumberInStock
+                };
+                _movieRentalContext.Movies.Add(movie);
+                _movieRentalContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
+
+    //static List<Movie> movies = new List<Movie>()
+    //{
+    //new Movie() { MovieId = 1, Name = "Shrek" },
+    //new Movie() { MovieId = 2, Name = "Wall-e" }
+    //};
 }

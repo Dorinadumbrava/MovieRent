@@ -14,6 +14,7 @@ namespace MovieRental.Models
         public int SignUpFee { get; set; }
         public byte MonthsOfMembership { get; set; }
         public byte DiscountRate { get; set; }
+        public int CustomerId { get; set; }
         public IList<Customer> Customers { get; set; }
     }
 }

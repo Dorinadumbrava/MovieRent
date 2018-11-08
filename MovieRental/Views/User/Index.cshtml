@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MovieRental.Models.Customers>
+﻿@model List<MovieRental.Models.Customer>
 
 @{
     ViewBag.Title = "Customers";
@@ -10,21 +10,29 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FullName)
-            
+            @* @Html.DisplayNameFor(model => model.FullName)*@
+            <p> Customer</p>
         </th>
-        
+        <th>
+            <p>Membership type</p>
+        </th>
+
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        
-        <td>
-            @*@Html.DisplayFor(modelItem => item.FullName)*@
-            @Html.ActionLink(item.FullName, "Details", "User", new { id = item.CustomerId }, null)
-        </td>
-        
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @*@Html.DisplayFor(modelItem => item.FullName)*@
+                @Html.ActionLink(item.FullName, "Details", "User", new { id = item.CustomerId }, null)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.FullName)*@
+                @item.MembershipType.Name
+            </td>
+
+        </tr>
+    }
 
 </table>

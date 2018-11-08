@@ -1,25 +1,27 @@
-﻿@model MovieRental.Models.Customers
+﻿@model MovieRental.Models.Customer
 
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
+</br>
+<h2 style="color: #3EB489">Customer Details</h2>
 <div>
-    <h4>Customers</h4>
     <hr />
     <dl class="dl-horizontal">
-        
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>*@
 
         <dd>
-            @Html.DisplayFor(model => model.FullName)
+            <strong>Name: </strong>@Html.DisplayFor(model => model.FullName)
         </dd>
+        <dd>
+            <strong>Membership type: </strong>@Html.DisplayFor(model => model.MembershipType.Name)
+        </dd>
+        @if (Model.BirthDate.HasValue)
 
-    </dl>
+        {
+            <dd>
+                <strong>Bithdate: </strong>@Html.DisplayFor(model => model.BirthDate)
+            </dd>
+        }
+        </dl>
 </div>
 

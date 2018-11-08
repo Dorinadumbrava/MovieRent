@@ -4,7 +4,7 @@ namespace MovieRental.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class adcustromers : DbMigration
+    public partial class adcustomer : DbMigration
     {
         public override void Up()
         {
@@ -24,12 +24,12 @@ namespace MovieRental.Migrations
                     );
                 context.Database.ExecuteSqlCommand(
                     "INSERT INTO dbo.Customers (FullName, IsSubscribedToNewsletter, BirthDate, MembershipType_MembershipTypeId )"
-                    + " VALUES ('Mihaela Pridea', 1, 12/09/1997, 5)"
+                    + " VALUES ('Mihaela Pridea', 1, 12/09/1997, 1)"
                     );
-               
+
             }
         }
-        
+
         public override void Down()
         {
         }

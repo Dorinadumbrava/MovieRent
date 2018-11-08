@@ -7,13 +7,13 @@ namespace MovieRental.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class adcustromers : IMigrationMetadata
+    public sealed partial class deletewrongconnection : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(adcustromers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(deletewrongconnection));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810311406100_ad custromers"; }
+            get { return "201811071435318_delete wrong connection"; }
         }
         
         string IMigrationMetadata.Source

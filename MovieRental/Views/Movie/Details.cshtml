@@ -7,18 +7,24 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Movie</h4>
+    <h4>@Html.DisplayFor(model => model.Name)</h4>
     <hr />
-    <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>*@
+    <ul>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        
+        <li>
+            <b>Genre:</b> @foreach (var genre in Model.Genres)
+            {
+                @genre.GenreName}</li>
 
-    </dl>
+
+            <li><b>Release Date:</b> @Html.DisplayFor(model => model.ReleaseDate)</li>
+
+            <li><b>Date Added:</b> @Model.Added</li>
+
+            <li><b>Number in Stock:</b> @Model.NumberInStock</li>
+
+        </ul>
 </div>
 @*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) |
