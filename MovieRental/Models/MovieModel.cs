@@ -16,15 +16,15 @@ namespace MovieRental.Models
         [RegularExpression("^[a-zA-Z0-9].*", ErrorMessage = "Add Latin letters and numbers only")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please add the genre")]
         public string Genre { get; set; }
         public IEnumerable<string> Genres { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please add release date")]
         public DateTime ReleaseDate { get; set; }
 
-        [Required]
-        [Range(1, 100)]
+        [Required(ErrorMessage = "Please add number n stock")]
+        [Range(1, 20)]
         public int NumberInStock { get; set; }
     }
 }
