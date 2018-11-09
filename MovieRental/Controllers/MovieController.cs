@@ -19,32 +19,31 @@ namespace MovieRental.Controllers
         public ActionResult Details(int id)
         {
             var model = _movieRentalContext.Movies.SingleOrDefault(m => m.MovieId == id);
-            if (model == null )
+            if (model == null)
             {
                 return new HttpNotFoundResult();
             }
             return View(model);
         }
+
         // GET: Movies/Create
         public ActionResult AddMovie()
         {
             var movieModel = new MovieModel()
             {
-                Genres = _movieContext.Genres.Select(g => g.GenreName).ToList()
+                Genres = _movieRentalContext.Genres.Select(g => g.GenreName).ToList()
             };
             return View(movieModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddMovie (MovieModel movieModel)
+        public ActionResult AddMovie(MovieModel movieModel)
         {
-            
-                if (!ModelState.IsValid)
-                {
-                    movieModel.Genres = _movieRentalContext.Genres.ToList();
-                    return View(movieModel);
-                
-                var genre = _movieRentalContext.Genres.SingleOrDefault(g => g.GenreId == movieModel.Genre);
+
+            if (!ModelState.IsValid)
+            {
+
+                var genre = _movieRentalContext.Genres.SingleOrDefault(g => g.GenreName == movieModel.Genre);
                 var genres = new List<Genre>();
                 genres.Add(genre);
                 var movie = new Movie()
@@ -59,15 +58,9 @@ namespace MovieRental.Controllers
                 _movieRentalContext.SaveChanges();
                 return RedirectToAction("Index");
             }
-            movieModel.Genres = _movieContext.Genres.Select(g => g.GenreName).ToList();
+            movieModel.Genres = _movieRentalContext.Genres.Select(n => n.GenreName).ToList();
             return View(movieModel);
         }
-
+    }
     }
 
-    //static List<Movie> movies = new List<Movie>()
-    //{
-    //new Movie() { MovieId = 1, Name = "Shrek" },
-    //new Movie() { MovieId = 2, Name = "Wall-e" }
-    //};
-}

@@ -17,8 +17,8 @@ namespace MovieRental.Models
         public string Name { get; set; }
 
         [Required]
-        public int Genre { get; set; }
-        public List<string> Genres { get; set; }
+        public string Genre { get; set; }
+        public IEnumerable<string> Genres { get; set; }
 
         [Required]
         public DateTime ReleaseDate { get; set; }
